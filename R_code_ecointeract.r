@@ -54,3 +54,48 @@ detach(meuse)
 # to see relationships between variables, rely on the scatterplot matrices:
 pairs(meuse)
 # you will create all the potential relationships in just one plot. the exact number will be a permutation of the variables: N * (N-1)
+
+# to change the colour of the plot, recall the previous function, add "col" and choose the colour you want:
+plot(meuse$cadmium, meuse$zinc, col="blue")
+
+# to change the size of the plot, recall the previous function, add "cex" and choose the size you want:
+plot(meuse$cadmium, meuse$zinc, col="blue", cex=2)
+
+# to change the shapes of the plot, recall the previous function, add "pch" and choose the size you want:
+plot(meuse$cadmium, meuse$zinc, col="blue", cex=2, pch= 10)
+
+# if you want to see just a portion of the columns of a dataset (subset), use:
+meuse[,3:6]
+
+# then, assign the meuse subset to a specific word:
+pol <- meuse[,3:6]
+pairs(pol, col="green3", cex=1.5)
+pairs(pol, col="green3", cex=1.5, pch=20)
+
+# to pair somme column using the names of the columns:
+pairs(~cadmium+copper+lead+zinc, data=meuse)
+pairs(~cadmium+copper+lead+zinc, data=meuse, col="green3")
+# the use of the "tilde" (~) is essential when giving an input to R with the sign "+"
+
+# -1 represents a negative correlation, 0 represents no correlation, while +1 represents a positive correlation
+
+
+# R spatial
+
+# to "explain" to R which are the coordinates:
+coordinates(meuse) = ~x+y
+
+# if we make a plot, then this is a spatial plot:
+plot (meuse)
+
+# moreover, x and y will now be referred to as "coordinates":
+meuse
+
+# to make a spatial plot of just one variable, with different colours, and, at the same time, give the plot the title you want:
+spplot(meuse, "zinc", main="You're the best graph ever <3")
+
+# we can also add plots of other variables next to the first one:
+spplot(meuse, c("zinc","copper","lead"), main="You're the best graph ever <3")
+
+# to make a plot with different sizes instead of different colours:
+bubble(meuse, "zinc", main="You're the best graph ever <3")
