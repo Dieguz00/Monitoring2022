@@ -51,3 +51,16 @@ head(covid)
 
 # to correct the header:
 covid <- read.table("covid_agg.csv", header=T)
+
+# now let's have access to all the data of the folder:
+covid
+
+# to see a summary of the data:
+summary(covid)
+
+# let's do a ggplot with ggplot2, putting also aesthetics:
+library(ggplot2)
+ggplot(covid, aes(x = lon, y = lat)) + geom_point(size=3, col="green3", pch=17)
+
+# to change the size of the points based on a variable:
+ggplot(covid, aes(x = lon, y = lat, size=cases)) + geom_point(col="green3", pch=17)
