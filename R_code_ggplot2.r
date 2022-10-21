@@ -1,37 +1,53 @@
-#This code is for ggplot2 based graphs
+# this code is for ggplot2 based graphs
 
-#Use the ggplot2 library:
+# use the ggplot2 library:
 library(ggplot2)
 
-#Creation of a data frame (table) of ecological variables:
+# creation of a data frame (table) of ecological variables:
 
-#We create two arrays:
+# we create two arrays:
 virus <- c(10, 30, 40, 50, 60, 80)
 death <- c(100, 240, 310, 470, 580, 690)
 
-#The function to create the data frame:
+# the function to create the data frame:
 data.frame(virus, death)
 
-#We can assign the dataframe to an object:
+# we can assign the dataframe to an object:
 d <- data.frame(virus, death)
 
-#Summary of some objects (result is the univariate statistics of the table):
+# summary of some objects (result is the univariate statistics of the table):
 summary(d)
 
-#To create a new ggplot we use the function ggplot(data, aesthetics(x=, y=)) + geometry we want to use (lines, point, ecc). In this case we use the function geom_point().
+# to create a new ggplot we use the function ggplot(data, aesthetics(x=, y=)) + geometry we want to use (lines, point, ecc). In this case we use the function geom_point().
 ggplot(d, aes(x=virus, y=death)) + geom_point()
 
-#We can add information to geom_point()
+# we can add information to geom_point()
 ggplot(d, aes(x=virus, y=death)) + geom_point(size=3, col="red", pch=17)
 
-#It is possible to use lines (the function connest observation in increasing order of x):
+# it is possible to use lines (the function connest observation in increasing order of x):
 ggplot(d, aes(x=virus, y=death)) + geom_line()
 
-#It is also possible to join different functions: 
+# it is also possible to join different functions: 
 ggplot(d, aes(x=virus, y=death)) + geom_point() + geom_line()
 
-#Or polygons: 
+# or polygons: 
 ggplot(d, aes(x=virus, y=death)) + geom_polygon()
+
 
 # let's use our own data from outside R:
 setwd("C:/lab/")
+
+# now let's take the data inside the folder:
+read.table("covid_agg.csv")
+
+# here the header is false because the first row contains just the names of the columns
+# the separator is useful for separating different columns
+
+# now let's assign it to a proper name:
+covid <- read.table("covid_agg.csv")
+
+# let's see the head of the folder:
+head(covid)
+
+# to correct the header:
+covid <- read.table("covid_agg.csv", header=T)
