@@ -32,3 +32,6 @@ ggplot(d, aes(x=virus, y=death)) + geom_point() + geom_line()
 
 #Or polygons: 
 ggplot(d, aes(x=virus, y=death)) + geom_polygon()
+
+# let's use our own data from outside R:
+setwd("C:/lab/")
