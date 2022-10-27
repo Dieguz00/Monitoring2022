@@ -42,3 +42,4 @@ points(covid_planar)
 cl <- colorRampPalette(c("purple","blue", "green", "yellow", "orange", "red", "magenta"))(1000) # 
 plot(density_map, col = cl)
 points(covid_planar)
+
